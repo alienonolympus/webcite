@@ -1,0 +1,110 @@
+{
+    "user1": {
+        "bib1" : {
+            "1": {
+                "title": "",
+                "flag_author": "0",
+                "surname": ["", "", ""],
+                "firstname": ["", "", ""],
+                "flag_sitename": "0",
+                "sitename": "",
+                "flag_datetime": "0",
+                "datetime": "",
+                "accessed": "",
+                "url": ""
+            },
+            "2": {
+                "title": "",
+                "flag_author": "0",
+                "surname": ["", "", ""],
+                "firstname": ["", "", ""],
+                "flag_sitename": "0",
+                "sitename": "",
+                "flag_datetime": "0",
+                "datetime": "",
+                "accessed": "",
+                "url": ""
+            }
+        },
+        "bib2" : {
+            "1": {
+                "title": "",
+                "flag_author": "0",
+                "surname": ["", "", ""],
+                "firstname": ["", "", ""],
+                "flag_sitename": "0",
+                "sitename": "",
+                "flag_datetime": "0",
+                "datetime": "",
+                "accessed": "",
+                "url": ""
+            },
+            "2": {
+                "title": "",
+                "flag_author": "0",
+                "surname": ["", "", ""],
+                "firstname": ["", "", ""],
+                "flag_sitename": "0",
+                "sitename": "",
+                "flag_datetime": "0",
+                "datetime": "",
+                "accessed": "",
+                "url": ""
+            }
+        }
+    },
+    "user2": {
+        "bib1" : {
+            "1": {
+                "title": "",
+                "flag_author": "0",
+                "surname": ["", "", ""],
+                "firstname": ["", "", ""],
+                "flag_sitename": "0",
+                "sitename": "",
+                "flag_datetime": "0",
+                "datetime": "",
+                "accessed": "",
+                "url": ""
+            },
+            "2": {
+                "title": "",
+                "flag_author": "0",
+                "surname": ["", "", ""],
+                "firstname": ["", "", ""],
+                "flag_sitename": "0",
+                "sitename": "",
+                "flag_datetime": "0",
+                "datetime": "",
+                "accessed": "",
+                "url": ""
+            }
+        },
+        "bib2" : {
+            "1": {
+                "title": "",
+                "flag_author": "0",
+                "surname": ["", "", ""],
+                "firstname": ["", "", ""],
+                "flag_sitename": "0",
+                "sitename": "",
+                "flag_datetime": "0",
+                "datetime": "",
+                "accessed": "",
+                "url": ""
+            },
+            "2": {
+                "title": "",
+                "flag_author": "0",
+                "surname": ["", "", ""],
+                "firstname": ["", "", ""],
+                "flag_sitename": "0",
+                "sitename": "",
+                "flag_datetime": "0",
+                "datetime": "",
+                "accessed": "",
+                "url": ""
+            }
+        }
+    }
+}

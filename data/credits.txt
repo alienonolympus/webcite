@@ -1,0 +1,14 @@
+First and Last names:
+
+http://www.quietaffiliate.com/free-first-name-and-last-name-databases-csv-and-sql/
+
+Most common words:
+
+www.wordfrequency.info
+https://www.ef.com/english-resources/english-vocabulary/top-1000-words/
+
+Websites used for collecting training data (by running it with scrape.py):
+
+https://www.pythoncentral.io/how-to-check-if-a-string-is-a-number-in-python-including-unicode/
+https://medium.com/@the_jennitaur/how-to-do-nothing-57e100f59bbb
+(rest of the data are handcrafted, with names coming from a quick scroll on the medium front page)
