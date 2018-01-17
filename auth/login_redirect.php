@@ -13,6 +13,6 @@
         header('Location: ../bibs.php');
     } else {
         $_SESSION['access'] = false;
-        header('Location: ../login.php?error=1');
+        header('Location: login.php?error=1');
     }
 ?>

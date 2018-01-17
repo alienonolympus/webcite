@@ -10,38 +10,44 @@
 
 <head>
     <title>Webcite | Register</title>
+    <link rel='stylesheet' type='text/css' href='../css/auth.css'>
 </head>
     
 <body>
-    <form id='signup' action='signup_redirect.php' method='post' accept-charset='UTF-8'>
+    <div class='container'>
+        <h1>Signup</h1>
+        <form id='signup' action='signup_redirect.php' method='post' accept-charset='UTF-8'>
 
         <?php
-            if ($error == 1) {
-                echo('
-                    <p>
-                        An error has occured, the following may have occured:
-                        <ul>
-                            <li>Quotation marks have been used.</li>
-                            <li>The username is not unique.</li>
-                        </ul>
-                    </p>
-                ');
-            }
-        ?>
-        <label for='username'>Username: </label>
-        <input type='text' name='username' id='username' maxlength='50'>
-        <br>
-        <label for='password'>Password: </label>
-        <input type='password' name='password' id='password' maxlength='50'>
-        <br>
-        <input type='submit' name='submit' value='submit'>
+                if ($error == 1) {
+                    echo('
+                        <p>
+                            An error has occured, the following may have occured:
+                            <ul>
+                                <li>Username is not unique.</li>
+                                <li>Quotation marks were used.</li>
+                            </ul>
+                        </p>
+                    ');
+                }
+            ?>
+            <table>
+                <tr>
+                    <td><label for='username'>Username: </label></td>
+                    <td><input type='text' name='username' id='username' maxlength='50' class='textbox'></td>
+                </tr>
+                <tr>
+                    <td><label for='password'>Password: </label></td>
+                    <td><input type='password' name='password' id='password' maxlength='50' class='textbox'></td>
+                </tr>
+                <tr>
+                    <td colspan='2' class='center-items'><button type='submit' name='submit' value='submit' id='submit' class='btn'>Submit</td>
+                </tr>
+            </table>
 
-    </form>
-
-    <h3>Note:</h3>
-
-    <p>Passwords are saved as plain text so please do not enter your commonly used passwords.</p>
-
+        </form>
+        <p class='center-items'>Have account? <a href="login.php">Login</a></p>
+    </div>
 </body>
     
 </html>
