@@ -25,10 +25,17 @@
 
 <p>
 
-<a href="logout.php">Logout</a>
+<a href="auth/logout.php">Logout</a>
 <a href="bibs.php">Bibliographies</a>
 
 </p>
+
+<form id='addentry' action='bibfn/addentry.php' method='post' accept-charset='UTF-8'>
+    <label for='newentry'>New Entry: </label>
+    <input type='text' name='url' id='url'>
+    <input type='hidden' name='bibname' id='bibname' value='<?php echo($bibname); ?>'>
+    <input type='submit' name='submit' value='submit'>
+</form>
 
 <?php
     $empty = true;
@@ -98,7 +105,7 @@
 
         echo("</td> 
         
-            <td><form id='delentry' action='delentry.php' method='post'>
+            <td><form id='delentry' action='bibfn/delentry.php' method='post'>
                 <input type='hidden' name='delentryname' id='delentryname' value='" . $key . "'>
                 <input type='hidden' name='bibname' id='bibname' value='" . $bibname . "'>
                 <input type='submit' name='submit' value='delete' onclick='return confirm(\"Are you sure?\");'>
@@ -152,29 +159,20 @@
         $empty = false;
     }
 
-    echo('<table>');
-
     if ($empty) {
         echo('<p>Your bibliography is empty!</p>');
-    } else {
-        echo('<br>');
     }
 ?>
 
-<form id='addentry' action='addentry.php' method='post' accept-charset='UTF-8'>
-    <label for='newentry'>New Entry: </label>
-    <input type='text' name='url' id='url'>
-    <input type='hidden' name='bibname' id='bibname' value='<?php echo($bibname); ?>'>
-    <input type='submit' name='submit' value='submit'>
-</form>
-
-<br>
-
-<form id='export' action='export.php' method='post'>
-    <input type='hidden' name='bibname' id='bibname' value='<?php echo($bibname); ?>'>
-    <input type='submit' name='export' value='export'>
-</form>
-
+<tr>
+    <td colspan='5'>
+    <form id='export' action='export.php' method='post'>
+        <input type='hidden' name='bibname' id='bibname' value='<?php echo($bibname); ?>'>
+        <input type='submit' name='export' value='export bibliography'>
+    </form>
+    </td>
+</tr>
+</table>
 </body>
     
 </html>

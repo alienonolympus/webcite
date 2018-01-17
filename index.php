@@ -17,8 +17,8 @@
 ?>
 
 <p>
-<a href="signup.php">Signup</a>
-<a href="login.php">Login</a>
+<a href="auth/signup.php">Signup</a>
+<a href="auth/login.php">Login</a>
 </p>
 
 </body>

@@ -24,7 +24,7 @@
 
 <p>
 
-<a href="logout.php">Logout</a>
+<a href="auth/logout.php">Logout</a>
 <a href="bibs.php">Bibliographies</a>
 <a href="bib.php?name=<?php echo($bibname); ?>"><?php echo($bibname); ?></a>
 

@@ -13,7 +13,26 @@
 
 <body>
 
-<p><a href="logout.php">Logout</a></p>
+<p><a href="auth/logout.php">Logout</a></p>
+
+<form id='addbib' action='bibfn/addbib.php' method='post' accept-charset='UTF-8'>
+    <?php
+        $error = $_GET['error'];
+        if ($error == 1) {
+            echo('
+                <p>
+                    An error has occured, the following may have occured:
+                    <ul>
+                        <li>The bibliography name is not unique.</li>
+                    </ul>
+                </p>
+            ');
+        }
+    ?>
+    <label for='newbib'>New Bibliography: </label>
+    <input type='text' name='newbib' id='newbib' maxlength='50'>
+    <input type='submit' name='submit' value='submit'>
+</form>
 
 <p>
 <?php
@@ -32,12 +51,12 @@
         if ($bib != 'password') {
             echo('<table><tr><td>' . $bib . '</td>' . "
 
-                <td><form id='delbib' action='delbib.php' method='post'>
+                <td><form id='delbib' action='bibfn/delbib.php' method='post'>
                     <input type='hidden' name='delbibname' id='delbibname' value='" . $bib . "'>
                     <input type='submit' name='submit' value='delete' onclick='return confirm(\"Are you sure?\");'>
                 </form></td>
 
-                <td><form id='editbib' action='editbib.php' method='post'>
+                <td><form id='editbib' action='bibfn/editbib.php' method='post'>
                 <input type='hidden' name='editbibname' id='editbibname' value='" . $bib . "'>
                 <input type='submit' name='submit' value='edit'>
                 </form></td>
@@ -52,25 +71,6 @@
         echo('<p>You have no bibliographies!</p>');
     }
 ?>
-
-<form id='addbib' action='addbib.php' method='post' accept-charset='UTF-8'>
-    <?php
-        $error = $_GET['error'];
-        if ($error == 1) {
-            echo('
-                <p>
-                    An error has occured, the following may have occured:
-                    <ul>
-                        <li>The bibliography name is not unique.</li>
-                    </ul>
-                </p>
-            ');
-        }
-    ?>
-    <label for='newbib'>New Bibliography: </label>
-    <input type='text' name='newbib' id='newbib' maxlength='50'>
-    <input type='submit' name='submit' value='submit'>
-</form>
 
 </body>
 

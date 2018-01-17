@@ -85,11 +85,11 @@ def scrape(url, page):
 
     try:
         date_modified = soup.find(itemprop='dateModified')['content']
-        datetime = arrow.get(date_modified).datetime.date().strftime('%b %d, %Y')
+        datetime = arrow.get(date_modified).datetime.date().strftime('%B %d, %Y')
     except KeyError:
         try:
             date_modified = soup.find(itemprop='dateModified')['datetime']
-            datetime = arrow.get(date_modified).datetime.date().strftime('%b %d, %Y')
+            datetime = arrow.get(date_modified).datetime.date().strftime('%B %d, %Y')
         except KeyError:
             flag_datetime = True
     except TypeError:
@@ -97,7 +97,7 @@ def scrape(url, page):
 
     # Access Date (Assumed to be today)
 
-    accessed = date.today().strftime('%b %d, %Y').replace(" 0", " ")
+    accessed = date.today().strftime('%B %d, %Y').replace(" 0", " ")
 
 
     return [title, flag_author, surname, firstname, flag_sitename, sitename, flag_datetime, datetime, accessed, url]

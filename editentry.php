@@ -25,7 +25,7 @@
 
 <p>
 
-<a href="logout.php">Logout</a>
+<a href="auth/logout.php">Logout</a>
 <a href="bibs.php">Bibliographies</a>
 <a href="bib.php?name=<?php echo($bibname); ?>"><?php echo($bibname); ?></a>
 
@@ -33,7 +33,7 @@
 
 <br>
 
-<form id='updateentry' action='updateentry.php' method='post' accept-charset='UTF-8'>
+<form id='updateentry' action='bibfn/updateentry.php' method='post' accept-charset='UTF-8'>
     <label for='title'>Title: </label>
     <input type='text' name='title' id='title' value=<?php echo('"' . $bib[$entryname]['title'] . '"'); ?>>
     <br>

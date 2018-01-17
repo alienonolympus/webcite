@@ -23,7 +23,8 @@
     $accessed = htmlspecialchars($_POST['accessed']);
     $url = htmlspecialchars($_POST['url']);
     $command = 'python bib.py ue \''. $_SESSION['username'] . '\' \'' . $bibname. '\' \'' . $entryname . '\' \'' . $title . '\' \'' . 'false' . '\' \'' . $surname .'\' \'' . $firstname .'\' \'' . 'false' . '\' \'' . $sitename . '\' \'' . $flag_datetime . '\' \'' . $datetime . '\' \'' . $accessed . '\' \'' . $url . '\' ';
+    chdir('..');
     exec($command);
-    header('Location: bib.php?name=' . $bibname);
+    header('Location: ../bib.php?name=' . $bibname);
     //username, bib_name, index_original, title, flag_author, surname, firstname, flag_sitename, sitename, flag_datetime, datetime, accessed, url
 ?>

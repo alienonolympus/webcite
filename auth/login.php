@@ -4,16 +4,16 @@
     session_start();
     $error = $_GET['error'];
     if ($_SESSION['access'] == 1) {
-        header('Location: bibs.php');
+        header('Location: ../bibs.php');
     }
 ?>
 
 <head>
-    <title>Webcite | Register</title>
+    <title>Webcite | Login</title>
 </head>
     
 <body>
-    <form id='signup' action='signup_redirect.php' method='post' accept-charset='UTF-8'>
+    <form id='login' action='login_redirect.php' method='post' accept-charset='UTF-8'>
 
         <?php
             if ($error == 1) {
@@ -21,8 +21,8 @@
                     <p>
                         An error has occured, the following may have occured:
                         <ul>
-                            <li>Quotation marks have been used.</li>
-                            <li>The username is not unique.</li>
+                            <li>Username does not exist.</li>
+                            <li>Password is incorrect.</li>
                         </ul>
                     </p>
                 ');
@@ -37,11 +37,7 @@
         <input type='submit' name='submit' value='submit'>
 
     </form>
-
-    <h3>Note:</h3>
-
-    <p>Passwords are saved as plain text so please do not enter your commonly used passwords.</p>
-
+    <p>Not registered? <a href="signup.php">Signup</a></p>
 </body>
     
 </html>
