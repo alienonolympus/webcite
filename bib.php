@@ -18,6 +18,7 @@
 
 <head>
     <title>Webcite | Edit Bibliography</title>
+    <script src='js/clipboard-polyfill.js'></script>
 </head>
     
 <body>
@@ -32,10 +33,15 @@
 <?php
     $empty = true;
 
+    echo('<table>');
+
     foreach ($bib as $key => $content) {
 
-        echo('<table><tr><td>');
+        echo('<tr><td>');
 
+        $cite = '';
+        $footnote = '';
+        
         // Authors
         $authors = 0;
         foreach ($content['surname'] as $surname) {
@@ -44,34 +50,49 @@
             }
         }
         if ($authors == 1) {
-            echo($content['surname'][0] . ', ' . $content['firstname'][0] . '.');
-        } else /* if ($authors <= 3) */ {
+            $cite = $cite . $content['surname'][0] . ', ' . $content['firstname'][0] . '. ';
+            $footnote = $footnote . $content['firstname'][0] . ' ' . $content['surname'][0] . ', ';
+        } else {
+            if ($authors <= 3) {
+                for ($i = 0; $i < $authors; $i++) {
+                    $footnote = $footnote . $content['firstname'][$i] . ' ' . $content['surname'][$i] . ', ';
+                }
+            } else {
+                $footnote = $footnote . $content['firstname'][0] . ' ' . $content['surname'][0] . ' et al. ';
+            }
             for ($i = 0; $i < $authors; $i++) {
                 if ($i < $authors - 1) {
-                    echo($content['surname'][$i] . ', ' . $content['firstname'][$i] . ', ');
+                    $cite = $cite . $content['surname'][$i] . ', ' . $content['firstname'][$i] . ', ';
                 } else {
-                    echo('and ' . $content['surname'][$i] . ', ' . $content['firstname'][$i] . '.');
+                    $cite = $cite . 'and ' . $content['surname'][$i] . ', ' . $content['firstname'][$i] . '. ';
                 }
             }
         }
 
         // Title
-        echo(' "' . $content['title'] . '."');
+        $cite = $cite . '"' . $content['title'] . '."';
+        $footnote = $footnote . '"' . $content['title'] . ',"';
         
         // Sitename
         if ($content['flag_sitename'] == false) {
-            echo('<i> ' . $content['sitename'] . '</i>.');
+            $cite = $cite . '<i> ' . $content['sitename'] . '</i>.';
+            $footnote = $footnote . '<i> ' . $content['sitename'] . '</i>,';
         }
 
         // Date
         if ($content['flag_datetime'] == false) {
-            echo(' Last modified ' . $content['datetime'] . '.');
+            $cite = $cite . ' Last modified ' . $content['datetime'] . '.';
+            $footnote = $footnote . ' last modified ' . $content['datetime'] . ',';
         } else {
-            echo(' Accessed ' . $content['accessed'] . '.');
+            $cite = $cite . ' Accessed ' . $content['accessed'] . '.';
+            $footnote = $footnote . ' accessed ' . $content['accessed'] . ',';
         }
 
         // URL
-        echo(' ' . $content['url'] . '.');
+        $cite = $cite . ' ' . $content['url'] . '.';
+        $footnote = $footnote . ' ' . $content['url'] . '.';
+
+        echo($cite);
 
         // Edit or deleting the entry
 
@@ -89,12 +110,49 @@
             <input type='submit' name='submit' value='edit'>
             </form></td>
 
-            </tr></table>
-        ");
+            <td><button id='copy-entry-" . $key . "'>copy entry</button></td>
+            <td><button id='copy-footnote-" . $key . "'>copy footnote</button></td>
+            <td><span id='copy-result-" . $key . "'></span></td>
 
-        echo('<br>');
+            </tr>
+
+            <script>
+                document.getElementById('copy-entry-" . $key . "').addEventListener('click', function() {
+                    var resultField = document.getElementById('copy-result-" . $key . "');
+                    var dt = new clipboard.DT();
+
+                    var plain = '" . $cite . "'.replace('<i>', '').replace('</i>', '');
+
+                    dt.setData('text/plain', plain);
+                    dt.setData('text/html', '" . $cite . "');
+
+                    clipboard.write(dt).then(function(){
+                        resultField.textContent = 'copied entry';
+                    }, function(err){
+                        resultField.textContent = err;
+                    });
+                });
+                document.getElementById('copy-footnote-" . $key . "').addEventListener('click', function() {
+                    var resultField = document.getElementById('copy-result-" . $key . "');
+                    var dt = new clipboard.DT();
+
+                    var plain = '" . $footnote . "'.replace('<i>', '').replace('</i>', '');
+
+                    dt.setData('text/plain', plain);
+                    dt.setData('text/html', '" . $footnote . "');
+
+                    clipboard.write(dt).then(function(){
+                        resultField.textContent = 'copied footnote';
+                    }, function(err){
+                        resultField.textContent = err;
+                    });
+                });
+            </script>
+        ");
         $empty = false;
     }
+
+    echo('<table>');
 
     if ($empty) {
         echo('<p>Your bibliography is empty!</p>');

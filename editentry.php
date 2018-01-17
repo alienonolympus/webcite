@@ -7,7 +7,6 @@
     }
     $bibname = htmlspecialchars($_POST['bibname']);
     $entryname = htmlspecialchars($_POST['editentryname']);
-    // exec('python bib.py de \'' . $_SESSION['username'] . '\' \'' . $bibname. '\' \'' . $entryname . '\'', $output, $ret);
     $json = file_get_contents('./bib.json');
     $json_data = json_decode($json, true);
     $bibs = $json_data[$_SESSION['username']];
