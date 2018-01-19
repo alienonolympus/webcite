@@ -11,6 +11,7 @@
 <head>
     <title>Webcite | Register</title>
     <link rel='stylesheet' type='text/css' href='../css/main.css'>
+    <link rel="icon" type="image/x-icon" href="../css/favicon.ico">
 </head>
     
 <body>
@@ -46,7 +47,7 @@
             </table>
 
         </form>
-        <p class='center-items'>Have account? <a href="login.php">Login</a></p>
+        <p class='center-items'>Have an account? <a href="login.php">Login</a></p>
     </div>
 </body>
     

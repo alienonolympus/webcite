@@ -12,7 +12,7 @@
         $_SESSION['access'] = true;
         header('Location: ../bibs.php');
     } else {
-        $_SESSION['access'] = true;
+        $_SESSION['access'] = false;
         header('Location: signup.php?error=1');
     }
 ?>

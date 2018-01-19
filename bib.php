@@ -20,6 +20,7 @@
     <title>Webcite | Edit Bibliography</title>
     <script src='js/clipboard-polyfill.js'></script>
     <link rel='stylesheet' type='text/css' href='../css/main.css'>
+    <link rel="icon" type="image/x-icon" href="css/favicon.ico">
 </head>
     
 <body>

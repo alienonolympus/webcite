@@ -25,6 +25,7 @@
 <head>
     <title>Webcite | Edit Entry</title>
     <link rel='stylesheet' type='text/css' href='../css/main.css'>
+    <link rel="icon" type="image/x-icon" href="css/favicon.ico">
 </head>
     
 <body>
