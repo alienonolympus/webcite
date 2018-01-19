@@ -77,6 +77,8 @@ def new_entry(username, bib_name, url): # ne
     else:
         index = title
 
+    print(index)
+
     try:
         if index in bib[username][bib_name]:
             return False

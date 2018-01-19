@@ -9,69 +9,73 @@
 
 <head>
     <title>Webcite | Bibliographies</title>
+    <link rel='stylesheet' type='text/css' href='../css/main.css'>
 </head>
 
 <body>
 
-<p><a href="auth/logout.php">Logout</a></p>
+<div class='container'>
 
-<form id='addbib' action='bibfn/addbib.php' method='post' accept-charset='UTF-8'>
+    <div class='header'>
+        <a href='auth/logout.php' class='headerlink'>Logout(<?php echo($_SESSION['username'])?>)</a>
+    </div>
+
+    <form id='addbib' action='bibfn/addbib.php' method='post' accept-charset='UTF-8' class='enter'>
+        <?php
+            $error = $_GET['error'];
+            if ($error == 1) {
+                echo('
+                    <p>
+                        An error has occured, the following may have occured:
+                        <ul>
+                            <li>The bibliography name is not unique.</li>
+                        </ul>
+                    </p>
+                ');
+            }
+        ?>
+        <label for='newbib'>New Bibliography: </label>
+        <input type='text' name='newbib' id='newbib' style='width: 70%'>
+        <button type='submit' name='submit' class='btn'>Submit</button>
+    </form>
     <?php
-        $error = $_GET['error'];
-        if ($error == 1) {
-            echo('
-                <p>
-                    An error has occured, the following may have occured:
-                    <ul>
-                        <li>The bibliography name is not unique.</li>
-                    </ul>
-                </p>
-            ');
+        $json = file_get_contents('./bib.json');
+        $json_data = json_decode($json, true);
+        $bibs = $json_data[$_SESSION['username']];
+        $empty = true;
+
+        foreach ($bibs as $bib => $content) {
+            if ($bib != 'password') {
+                echo('<table>
+                    <col width="80%">
+                    <col width="10%">
+                    <col width="10%">
+                    <tr class="bibs">
+                        <td>' . $bib . '</td>' . "
+
+                        <td><form id='delbib' action='bibfn/delbib.php' method='post'>
+                            <input type='hidden' name='delbibname' id='delbibname' value='" . $bib . "'>
+                            <button type='submit' name='submit' class='btn'  onclick='return confirm(\"Are you sure?\");'>Delete</button>
+                        </form></td>
+
+                        <td><form id='editbib' action='bibfn/editbib.php' method='post'>
+                        <input type='hidden' name='editbibname' id='editbibname' value='" . $bib . "'>
+                        <button type='submit' name='submit' class='btn'>Edit</button>
+                        </form></td>
+                    </tr></table>
+                ");
+                $empty = false;
+            }
+        }
+
+        if ($empty) {
+            echo('<p>You have no bibliographies!</p>');
         }
     ?>
-    <label for='newbib'>New Bibliography: </label>
-    <input type='text' name='newbib' id='newbib' maxlength='50'>
-    <input type='submit' name='submit' value='submit'>
-</form>
 
-<p>
-<?php
-    echo('Hello, ' . $_SESSION['username']);
-?>
-. Here are your bibliographies:
-</p>
+    <br>
 
-<?php
-    $json = file_get_contents('./bib.json');
-    $json_data = json_decode($json, true);
-    $bibs = $json_data[$_SESSION['username']];
-    $empty = true;
-
-    foreach ($bibs as $bib => $content) {
-        if ($bib != 'password') {
-            echo('<table><tr><td>' . $bib . '</td>' . "
-
-                <td><form id='delbib' action='bibfn/delbib.php' method='post'>
-                    <input type='hidden' name='delbibname' id='delbibname' value='" . $bib . "'>
-                    <input type='submit' name='submit' value='delete' onclick='return confirm(\"Are you sure?\");'>
-                </form></td>
-
-                <td><form id='editbib' action='bibfn/editbib.php' method='post'>
-                <input type='hidden' name='editbibname' id='editbibname' value='" . $bib . "'>
-                <input type='submit' name='submit' value='edit'>
-                </form></td>
-
-                </tr></table>
-            ");
-            $empty = false;
-        }
-    }
-
-    if ($empty) {
-        echo('<p>You have no bibliographies!</p>');
-    }
-?>
-
+</div>
 </body>
 
 </html>

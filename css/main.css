@@ -4,27 +4,41 @@ body {
 
 .container {
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 30px;
     background-color: #ffffff;
     border-radius: 10px;
+    padding: 0px 0px 0px 0px;
+    transition: all 0.1s;
+}
+
+.authcontainer {
     padding: 50px 25px 50px 25px;
-    box-shadow: 3px 3px 12px 4px #d3eeee;
 }
 
 @media (min-width: 1060px) {
     .container {
+        width: 1007px;
+    }
+    .authcontainer {
         width: 450px;
     }
 }
 
 @media (max-width: 1060px) and (min-width: 560px) {
     .container {
+        width: 95%;
+    }
+    .authcontainer {
         width: 450px;
     }
 }
 
 @media (max-width: 560px) {
     .container {
+        margin: 2px 0px 2px 0px;
+        width: 100%;
+    }
+    .authcontainer {
         width: 75%;
     }
 }
@@ -63,10 +77,10 @@ label {
     border-width: 0;
     outline: none;
     border-radius: 8px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    box-shadow: 0 1px 1.5px rgba(0, 0, 0, .6);
 
-    background-color: #eeffee;
-    color: #000000;
+    background-color: #ffa500;
+    color: #111111;
     font-size: 18px;
 
     transition: background-color .3s;
@@ -76,7 +90,7 @@ label {
 }
 
 .btn:hover, .btn:focus {
-    background-color: #ddeedd;
+    background-color: #00d12f;
 }
 
 .btn:before {
@@ -105,4 +119,85 @@ label {
     width: 120%;
     padding-top: 120%;
     transition: width .2s ease-out, padding-top .2s ease-out;
+}
+
+.btnsmall {
+    width: 85px;
+}
+
+.btnlarge {
+    width: 200px;
+}
+
+.authbtn {
+    background-color: #eeffee;
+    color: #000000;
+}
+
+.authbtn:hover, .authbtn:focus {
+    background-color: #ddeedd;
+}
+
+.header {
+    height: 30px;
+    width: 100%;
+    background-color: #ffa500;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.header * {
+    color: #ffffff;
+    font-size: 20px;
+    margin: 0px 5px 0px 5px;
+    text-decoration: none;
+}
+
+.header a:hover {
+    text-decoration: overline;
+}
+
+.enter {
+    margin-bottom: 20px;
+}
+
+.bibs:nth-child(3) {
+    width: 45%;
+}
+
+table.entries {
+    margin: 10px 0px 10px 0px;
+}
+
+table.entries td:not(:first-child) {
+    padding: 10px 0px 10px 0px;      
+}
+
+table.entries td {
+    border-bottom: 2px solid #ffa500;
+}
+
+.export {
+    display: block;
+    margin: 10px;
+    margin-bottom: 25px;
+}
+
+.input tr td {
+    border: 0;
+}
+
+.input {
+    width: 100%;
+}
+
+.input input {
+    width: 100%;
+    margin-left: -50px;
+}
+
+.left-margin {
+    margin-left: 5px;
 }

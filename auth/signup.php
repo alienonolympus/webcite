@@ -10,11 +10,11 @@
 
 <head>
     <title>Webcite | Register</title>
-    <link rel='stylesheet' type='text/css' href='../css/auth.css'>
+    <link rel='stylesheet' type='text/css' href='../css/main.css'>
 </head>
     
 <body>
-    <div class='container'>
+    <div class='container authcontainer'>
         <h1>Signup</h1>
         <form id='signup' action='signup_redirect.php' method='post' accept-charset='UTF-8'>
 
@@ -41,7 +41,7 @@
                     <td><input type='password' name='password' id='password' maxlength='50' class='textbox'></td>
                 </tr>
                 <tr>
-                    <td colspan='2' class='center-items'><button type='submit' name='submit' value='submit' id='submit' class='btn'>Submit</td>
+                    <td colspan='2' class='center-items'><button type='submit' name='submit' value='submit' id='submit' class='btn authbtn'>Submit</td>
                 </tr>
             </table>
 
